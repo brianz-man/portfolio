@@ -1,14 +1,3 @@
-// src/components/layout/Footer.tsx
-//
-// ─── FOOTER ──────────────────────────────────────────────────────────────────
-// Clean, minimal footer with:
-//   • Logo / name (scrolls back to top on click)
-//   • Quick navigation links
-//   • Social links
-//   • Copyright + "built with" credit
-//   • Current year computed dynamically (no hardcoding!)
-// ─────────────────────────────────────────────────────────────────────────────
-
 import { profile } from "@/data/profile";
 
 const quickLinks = [
@@ -45,8 +34,8 @@ export function Footer() {
               className="w-fit"
             >
               <img
-                src="src/images/logo.png"
-                alt="BN Logo"
+                src="images/logo.png"
+                alt=""
                 className="w-14 h-14 object-contain hover:scale-105 transition-transform duration-300"
               />
             </button>

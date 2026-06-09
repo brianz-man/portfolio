@@ -1,16 +1,3 @@
-// src/components/sections/About.tsx
-//
-// ─── ABOUT SECTION ───────────────────────────────────────────────────────────
-// This section gives visitors a personal feel for who Brian is.
-// Layout: Two columns — left has text/stats, right has a stylized avatar card.
-//
-// KEY CONCEPTS IN THIS FILE:
-//   • Importing data from data files (profile.ts)
-//   • Using reusable UI components (SectionTitle, Button, Badge)
-//   • CSS Grid for two-column layout
-//   • Responsive design with md: breakpoint prefix
-// ─────────────────────────────────────────────────────────────────────────────
-
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
@@ -186,5 +173,4 @@ export function About() {
     </section>
   );
 }
-// Add this at the very bottom of the file
 export default About;

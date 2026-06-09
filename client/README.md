@@ -72,13 +72,13 @@ export default defineConfig([
 ])
 ``` -->
 
-# Brian Nyairo — Portfolio
+# Portfolio
 
 A modern, dark-first developer portfolio built with React, TypeScript, TailwindCSS, and Express.js.
 
 ---
 
-## 🗂️ Project Structure
+##  Project Structure
 
 ```
 portfolio/
@@ -108,7 +108,7 @@ portfolio/
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -180,7 +180,7 @@ Open your browser at: **http://localhost:5173**
 
 ---
 
-## 📝 Customizing Content
+##  Customizing Content
 
 All content is in `client/src/data/`:
 
@@ -193,7 +193,7 @@ All content is in `client/src/data/`:
 
 ---
 
-## 🎨 Changing the Color Scheme
+## Changing the Color Scheme
 
 Edit `client/tailwind.config.ts` → `theme.extend.colors`:
 

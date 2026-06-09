@@ -1,7 +1,3 @@
-// src/data/projects.ts
-// Replace these with Brian's real projects.
-// "featured: true" projects appear in the highlighted grid at the top.
-
 import type { Project } from "@/types";
 
 export const projects: Project[] = [

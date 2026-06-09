@@ -1,13 +1,3 @@
-// src/data/profile.ts
-//
-// ─── WHY SEPARATE DATA FILES? ────────────────────────────────────────────────
-// All content lives here — NOT hardcoded inside components.
-// This means:
-//   • Updating your name/bio = edit ONE file, not 10 components
-//   • Components stay clean and reusable
-//   • Later you can swap this for an API/CMS without touching UI
-// ─────────────────────────────────────────────────────────────────────────────
-
 import type { Profile } from "@/types";
 
 export const profile: Profile = {

@@ -1,17 +1,3 @@
-// src/types/index.ts
-//
-// ─── WHY TYPES FIRST? ────────────────────────────────────────────────────────
-// Before we build any component, we define the SHAPE of our data here.
-// This is a TypeScript best practice:
-//   1. Components become self-documenting — you know exactly what props they need
-//   2. TypeScript catches mismatches at compile time, not at runtime
-//   3. One place to update if the data shape ever changes
-//
-// Think of interfaces as "contracts" — a guarantee of what an object contains.
-// ─────────────────────────────────────────────────────────────────────────────
-
-// ── Project ───────────────────────────────────────────────────────────────────
-// Represents one item in the Projects section
 export interface Project {
   id: number;
   title: string;

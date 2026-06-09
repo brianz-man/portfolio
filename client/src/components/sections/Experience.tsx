@@ -1,15 +1,3 @@
-// src/components/sections/Experience.tsx
-//
-// ─── EXPERIENCE SECTION ──────────────────────────────────────────────────────
-// Displays Brian's work history as a vertical timeline.
-//
-// KEY CONCEPTS:
-//   • Iterating over an array with .map() + index
-//   • Passing index to determine "isLast" for the final timeline item
-//   • Composing sections from smaller components (TimelineItem)
-//   • Summary statistics beside the timeline
-// ─────────────────────────────────────────────────────────────────────────────
-
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { TimelineItem } from "@/components/ui/TimelineItem";
 import { experiences } from "@/data/experience";

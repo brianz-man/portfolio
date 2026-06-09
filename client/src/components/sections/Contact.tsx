@@ -1,17 +1,3 @@
-// src/components/sections/Contact.tsx
-//
-// ─── CONTACT SECTION ──────────────────────────────────────────────────────────
-// The contact form collects: name, email, subject, message
-// On submit → sends POST request to Express backend at /api/contact
-//
-// KEY CONCEPTS:
-//   • Controlled form inputs — React manages every field via useState
-//   • Form validation before submitting
-//   • Async/await for API calls with axios
-//   • Loading, success, and error states
-//   • Preventing default form submission with e.preventDefault()
-// ─────────────────────────────────────────────────────────────────────────────
-
 import { useState } from "react";
 import axios from "axios";
 import { SectionTitle } from "@/components/ui/SectionTitle";
@@ -321,3 +307,6 @@ export function Contact() {
   );
 }
 export default Contact;
+
+
+

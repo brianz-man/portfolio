@@ -1,8 +1,3 @@
-// src/components/ui/Icon.tsx
-// Google Material Icons wrapper
-// Usage: <Icon name="email" />
-// Full icon list: https://fonts.google.com/icons
-
 interface IconProps {
   name: string;
   className?: string;

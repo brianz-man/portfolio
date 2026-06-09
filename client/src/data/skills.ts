@@ -1,7 +1,3 @@
-// src/data/skills.ts
-// Skills are grouped by category so the Skills section
-// can render them in organized columns/tabs.
-
 import type { Skill } from "@/types";
 
 export const skills: Skill[] = [

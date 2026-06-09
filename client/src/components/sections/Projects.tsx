@@ -1,19 +1,3 @@
-// src/components/sections/Projects.tsx
-//
-// ─── PROJECTS SECTION ────────────────────────────────────────────────────────
-// The most important section for a software engineer's portfolio.
-// Layout:
-//   1. Featured projects — large prominent cards (top 3)
-//   2. "Show more" toggle — reveals remaining projects
-//   3. Category filter — filter by fullstack / frontend / backend / mobile
-//
-// KEY CONCEPTS:
-//   • useState to toggle "show all" vs "show featured"
-//   • useState for active category filter
-//   • Derived state — filtered list computed from state + data
-//   • Conditional rendering
-// ─────────────────────────────────────────────────────────────────────────────
-
 import { useState } from "react";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Button } from "@/components/ui/Button";

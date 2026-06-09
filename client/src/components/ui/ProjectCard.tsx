@@ -1,19 +1,3 @@
-// src/components/ui/ProjectCard.tsx
-//
-// ─── PROJECT CARD ────────────────────────────────────────────────────────────
-// Renders a single project with its title, description, tech stack,
-// and links to GitHub / live demo.
-//
-// There are TWO display modes:
-//   featured  → Larger card, used for top 3 highlighted projects
-//   default   → Compact card, used for the full projects grid
-//
-// KEY CONCEPTS:
-//   • Conditional rendering with ternary (featured ? ... : ...)
-//   • Optional chaining (?.) for optional props like liveUrl
-//   • Spreading props pattern
-// ─────────────────────────────────────────────────────────────────────────────
-
 import { Badge } from "@/components/ui/Badge";
 import type { Project } from "@/types";
 

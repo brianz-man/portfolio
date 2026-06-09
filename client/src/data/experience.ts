@@ -1,7 +1,3 @@
-// src/data/experience.ts
-// Work history — rendered as a vertical timeline in the Experience section.
-// "description" is an array of strings — each becomes one bullet point.
-
 import type { Experience } from "@/types";
 
 export const experiences: Experience[] = [

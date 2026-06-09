@@ -1,21 +1,3 @@
-// src/App.tsx
-//
-// ─── THE ROOT OF THE APPLICATION ─────────────────────────────────────────────
-// App.tsx is the top-level component. Think of it as the "frame" of the house.
-// It:
-//   1. Wraps everything in ThemeProvider (so all children can use dark mode)
-//   2. Renders the Navbar (fixed at top)
-//   3. Renders each Section in order (the actual page content)
-//   4. Renders the Footer
-//
-// Sections are imported lazily (React.lazy) — meaning they only load
-// when they're about to be scrolled into view. This makes the initial
-// page load MUCH faster.
-//
-// NOTE: We're using anchor-based navigation (single page), not React Router,
-// because a portfolio is a single scrollable page — not multi-page.
-// ─────────────────────────────────────────────────────────────────────────────
-
 import { Suspense, lazy } from "react";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { Navbar } from "@/components/layout/Navbar";

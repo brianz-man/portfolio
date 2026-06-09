@@ -1,15 +1,4 @@
-// src/components/ui/Badge.tsx
-//
-// A small pill/tag component used to display:
-//   • Tech stack items on project cards ("React", "TypeScript")
-//   • Skill levels ("Expert", "Advanced")
-//   • Category labels
-//
-// USAGE:
-//   <Badge>React</Badge>
-//   <Badge variant="outline">TypeScript</Badge>
-//   <Badge variant="accent">Expert</Badge>
-
+import React from "react";
 interface BadgeProps {
   children: React.ReactNode;
   variant?: "default" | "outline" | "accent";

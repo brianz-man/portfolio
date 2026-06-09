@@ -1,21 +1,3 @@
-// src/components/ui/Button.tsx
-//
-// ─── REUSABLE UI COMPONENT ───────────────────────────────────────────────────
-// This is an "atom" — the smallest reusable unit of UI.
-// We build ONE Button component that handles all variants:
-//   primary  → filled with accent color (main CTAs)
-//   outline  → border only (secondary actions)
-//   ghost    → no border, subtle hover (nav links, icon buttons)
-//
-// WHY NOT JUST USE <button>?
-// Because we'd repeat the same classes everywhere. One change here
-// updates every button across the entire portfolio.
-//
-// "extends React.ButtonHTMLAttributes<HTMLButtonElement>" means
-// the Button accepts ALL standard HTML button props (onClick, type, disabled, etc.)
-// in addition to our custom ones.
-// ─────────────────────────────────────────────────────────────────────────────
-
 import type { ReactNode } from "react";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

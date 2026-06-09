@@ -1,18 +1,3 @@
-// src/components/ui/SectionTitle.tsx
-//
-// Every major section (Skills, Projects, Experience) has the same
-// heading style: a label above, large title, optional subtitle below.
-//
-// By extracting this into its own component, every section is consistent
-// without repeating the same HTML + classes in each file.
-//
-// USAGE:
-//   <SectionTitle
-//     label="What I've built"
-//     title="Projects"
-//     subtitle="A selection of my recent work"
-//   />
-
 interface SectionTitleProps {
   label?: string; // Small text above the title e.g. "03 — About"
   title: string; // Main large heading

@@ -1,14 +1,3 @@
-// src/components/layout/Navbar.tsx
-//
-// The top navigation bar. Features:
-//   • Transparent at top, blurred dark background on scroll
-//   • Smooth scroll to each section on click
-//   • Dark/Light toggle button
-//   • Mobile hamburger menu
-//   • Active section highlight (using scroll position)
-//
-// useEffect + useState track scroll position to change navbar appearance.
-
 import { useState, useEffect } from "react";
 import { useTheme } from "@/context/ThemeContext";
 import { Button } from "@/components/ui/Button";
@@ -66,8 +55,8 @@ export function Navbar() {
           className="font-display text-xl font-bold text-text-primary hover:text-accent transition-colors"
         >
           <img
-            src="src/images/logo.png"
-            alt="BN Logo"
+            src="/images/logo.png"
+            alt=""
             className="w-14 h-14 object-contain hover:scale-105 transition-transform duration-300"
           />
         </button>

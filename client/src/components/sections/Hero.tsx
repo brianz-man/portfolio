@@ -1,128 +1,126 @@
 // src/components/sections/Hero.tsx
 //
-// The first thing visitors see — the most important section.
-// Goal: In under 5 seconds, answer:
-//   1. WHO is this person?
-//   2. WHAT do they do?
-//   3. WHY should I care?
-//   4. HOW do I reach them?
-//
-// Design: Full viewport height, centered content, animated entrance,
-// floating code snippet as a visual element, social links.
+// CARD FLIP ANIMATION:
+// The code card and profile photo are two "faces" of one card.
+// On hover → CSS 3D rotateY(180deg) flips to show the photo.
+// Uses perspective + transform-style: preserve-3d for real 3D depth.
+// The back face has rotateY(180deg) so it appears correct when flipped.
 
-import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/Button";
-import { profile } from "@/data/profile";
-interface Social {
-  name: string;
-  url: string;
-}
+import { useEffect, useState } from 'react'
+import { Button } from '@/components/ui/Button'
+import { profile } from '@/data/profile'
 
 export function Hero() {
-  // Typewriter effect — cycles through roles
   const roles = [
-    "Junior Software Engineer",
-    "Full-Stack Developer",
-    "System Architect",
-    "Open Source Contributor",
-  ];
-  const [currentRole, setCurrentRole] = useState(0);
-  const [visible, setVisible] = useState(true);
+    'Full-Stack Developer',
+    'System Architect',
+    'Open Source Contributor',
+    'Software Engineer',
+  ]
+  const [currentRole, setCurrentRole] = useState(0)
+  const [visible, setVisible]         = useState(true)
 
   useEffect(() => {
-    // Every 3 seconds, fade out, switch role, fade in
     const interval = setInterval(() => {
-      setVisible(false);
+      setVisible(false)
       setTimeout(() => {
-        setCurrentRole((prev) => (prev + 1) % roles.length);
-        setVisible(true);
-      }, 400);
-    }, 3000);
+        setCurrentRole((prev) => (prev + 1) % roles.length)
+        setVisible(true)
+      }, 400)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
 
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, []);
+  const scrollToProjects = () =>
+    document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })
 
-  const scrollToProjects = () => {
-    document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const scrollToContact = () => {
-    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
-  };
+  const scrollToContact = () =>
+    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden transition-colors duration-300"
-      style={{ backgroundColor: "var(--bg-base)" }}
+      className="relative min-h-screen flex items-center overflow-hidden"
+      style={{ backgroundColor: 'var(--bg-base)' }}
     >
-      {/* ── Background Grid Pattern ───────────────────────────────────── */}
-      {/* Creates a subtle dot grid — adds depth without distraction */}
+
+      {/* ── Background dot grid ──────────────────────────────────────── */}
       <div
-        className="absolute inset-0 opacity-20"
+        className="absolute inset-0 opacity-10"
         style={{
-          backgroundImage: `radial-gradient(circle, #00FFB244 1px, transparent 1px)`,
-          backgroundSize: "40px 40px",
+          backgroundImage: `radial-gradient(circle, var(--accent) 1px, transparent 1px)`,
+          backgroundSize: '40px 40px',
         }}
       />
 
-      {/* ── Glow Orb — Decorative background light ───────────────────── */}
+      {/* ── Glow orb ─────────────────────────────────────────────────── */}
       <div
-        className="
-        absolute top-1/4 right-1/4
-        w-96 h-96 rounded-full
-        bg-accent/5 blur-3xl
-        animate-glow-pulse
-      "
+        className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl opacity-10"
+        style={{ backgroundColor: 'var(--accent)' }}
       />
 
       {/* ── Main Content ─────────────────────────────────────────────── */}
-      <div className="relative max-w-portfolio mx-auto px-6 py-24 pt-32 grid md:grid-cols-2 gap-12 items-center">
-        {/* Left: Text Content */}
-        <div className="flex flex-col gap-6 animate-fade-up">
-          {/* Status Badge */}
+      <div
+        className="relative w-full mx-auto px-6 py-24 pt-32 grid md:grid-cols-2 gap-12 items-center"
+        style={{ maxWidth: '900px' }}
+      >
+
+        {/* ── LEFT: Text ───────────────────────────────────────────────── */}
+        <div className="flex flex-col gap-6">
+
+          {/* Available badge */}
           <div className="inline-flex items-center gap-2 w-fit">
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-            <span className="font-mono text-xs text-accent tracking-widest uppercase">
+            <span
+              className="w-2 h-2 rounded-full animate-pulse"
+              style={{ backgroundColor: 'var(--accent)' }}
+            />
+            <span
+              className="font-mono text-xs tracking-widest uppercase"
+              style={{ color: 'var(--accent)' }}
+            >
               Available for work
             </span>
           </div>
 
-          {/* Greeting + Name */}
+          {/* Name */}
           <div>
-            <p className="font-body text-text-secondary text-lg mb-2">
+            <p
+              className="font-body text-lg mb-2"
+              style={{ color: 'var(--text-secondary)' }}
+            >
               Hello, I'm
             </p>
             <h1
               className="font-display text-5xl md:text-7xl font-black leading-none"
-              style={{ color: "var(--text-primary)" }}
+              style={{ color: 'var(--text-primary)' }}
             >
-              {profile.name.split(" ")[0]}
+              {profile.name.split(' ')[0]}
               <br />
-              <span style={{ color: "var(--accent)" }}>
-                {profile.name.split(" ")[1]}
+              <span style={{ color: 'var(--accent)' }}>
+                {profile.name.split(' ')[1]}
               </span>
-              <span style={{ color: "var(--accent)" }}>.</span>
+              <span style={{ color: 'var(--accent)' }}>.</span>
             </h1>
           </div>
 
-          {/* Typewriter Role */}
+          {/* Typewriter role */}
           <div className="h-8 overflow-hidden">
             <p
-              className={`
-                font-mono text-text-secondary text-lg
-                transition-opacity duration-400
-                ${visible ? "opacity-100" : "opacity-0"}
-              `}
+              className="font-mono text-lg transition-opacity duration-300"
+              style={{
+                color: 'var(--text-secondary)',
+                opacity: visible ? 1 : 0,
+              }}
             >
-              <span className="text-accent">&gt;</span> {roles[currentRole]}
+              <span style={{ color: 'var(--accent)' }}>&gt;</span>{' '}
+              {roles[currentRole]}
             </p>
           </div>
 
           {/* Tagline */}
           <p
             className="font-body text-lg leading-relaxed max-w-md"
-            style={{ color: "var(--text-secondary)" }}
+            style={{ color: 'var(--text-secondary)' }}
           >
             {profile.tagline}
           </p>
@@ -137,25 +135,34 @@ export function Hero() {
             </Button>
           </div>
 
-          {/* Social Links */}
-          <div className="flex items-center gap-4 mt-2">
-            <span className="font-mono text-xs text-text-muted">
+          {/* Social links */}
+          <div className="flex items-center gap-4 mt-2 flex-wrap">
+            <span
+              className="font-mono text-xs"
+              style={{ color: 'var(--text-muted)' }}
+            >
               FIND ME ON
             </span>
-            <div className="flex gap-3">
+            <div className="flex gap-3 flex-wrap">
               {profile.socials.map((social) => (
                 <a
                   key={social.name}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="
-                    text-text-secondary hover:text-accent
-                    transition-colors duration-200
-                    font-mono text-xs
-                    border border-surface-border hover:border-accent
-                    rounded px-2 py-1
-                  "
+                  className="font-mono text-xs rounded px-2 py-1 transition-all duration-200"
+                  style={{
+                    color: 'var(--text-secondary)',
+                    border: '1px solid var(--border)',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color         = 'var(--accent)'
+                    e.currentTarget.style.borderColor   = 'var(--accent)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color         = 'var(--text-secondary)'
+                    e.currentTarget.style.borderColor   = 'var(--border)'
+                  }}
                 >
                   {social.name}
                 </a>
@@ -164,87 +171,206 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Right: Code Snippet Visual — a floating "code card" */}
-        <div className="hidden md:block animate-slide-left">
+        {/* ── RIGHT: Flip Card ─────────────────────────────────────────── */}
+        {/*
+          HOW THE FLIP WORKS:
+          1. .flip-card-container  — sets the 3D perspective
+          2. .flip-card-inner      — the element that actually rotates
+          3. .flip-card-front      — the code card (visible by default)
+          4. .flip-card-back       — the photo (hidden behind, pre-rotated 180deg)
+
+          On hover → inner rotates 180deg → front disappears, back appears.
+          "backface-visibility: hidden" hides the back of each face so they
+          don't show through each other during the rotation.
+        */}
+        <div className="hidden md:flex justify-center items-center">
+
+          {/* Perspective wrapper — must have fixed dimensions */}
           <div
-            className="
-            relative bg-surface rounded-xl
-            border border-surface-border
-            shadow-2xl overflow-hidden
-            font-mono text-sm
-          "
+            className="relative w-full cursor-pointer"
+            style={{
+              height: '360px',
+              perspective: '1000px',      // Depth of 3D space
+            }}
+            // Also flip on click for mobile friendliness
           >
-            {/* Window chrome (red/yellow/green dots) */}
+            {/*
+              Inner — this is what rotates.
+              transition controls the flip speed (0.7s).
+            */}
             <div
-              className="flex items-center gap-2 px-4 py-3"
+              className="flip-card-inner absolute inset-0 w-full h-full"
               style={{
-                backgroundColor: "var(--bg-hover)",
-                borderBottom: "1px solid var(--border)",
+                transformStyle: 'preserve-3d',
+                transition: 'transform 0.7s ease',
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLDivElement).style.transform = 'rotateY(180deg)'
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLDivElement).style.transform = 'rotateY(0deg)'
               }}
             >
-              <span className="w-3 h-3 rounded-full bg-red-500/70" />
-              <span className="w-3 h-3 rounded-full bg-yellow-500/70" />
-              <span className="w-3 h-3 rounded-full bg-green-500/70" />
-              <span className="ml-4 text-text-muted text-xs">brian.ts</span>
-            </div>
 
-            {/* Code content */}
-            <pre className="p-6 text-sm leading-7 overflow-auto">
-              <code>
-                <span className="text-purple-400">const </span>
-                <span className="text-accent">brian</span>
-                <span className="text-text-primary"> = {"{"}</span>
-                {"\n"}
-                <span className="text-text-muted">
-                  {" "}
-                  // Junior Software Engineer
-                </span>
-                {"\n"}
-                <span className="text-blue-400"> name</span>
-                <span className="text-text-primary">: </span>
-                <span className="text-green-400">'Brian Nyairo'</span>
-                <span className="text-text-primary">,</span>
-                {"\n"}
-                <span className="text-blue-400"> location</span>
-                <span className="text-text-primary">: </span>
-                <span className="text-green-400">'Nairobi, Kenya 🇰🇪'</span>
-                <span className="text-text-primary">,</span>
-                {"\n"}
-                <span className="text-blue-400"> experience</span>
-                <span className="text-text-primary">: </span>
-                <span className="text-orange-400">2</span>
-                <span className="text-text-primary">,</span>
-                {"\n"}
-                <span className="text-blue-400"> stack</span>
-                <span className="text-text-primary">: [</span>
-                {"\n"}
-                <span className="text-green-400">
-                  {" "}
-                  'MongoDB', 'Express.js',
-                </span>
-                {"\n"}
-                <span className="text-green-400"> 'React', 'Node.js'</span>
-                {"\n"}
-                <span className="text-green-400"> 'Django', 'PostgreSQL'</span>
-                {"\n"}
-                <span className="text-text-primary"> ],</span>
-                {"\n"}
-                <span className="text-blue-400"> available</span>
-                <span className="text-text-primary">: </span>
-                <span className="text-accent">true</span>
-                {"\n"}
-                <span className="text-text-primary">{"}"}</span>
-              </code>
-            </pre>
-          </div>
+              {/* ── FRONT FACE: Code Card ───────────────────────────── */}
+              <div
+                className="absolute inset-0 w-full h-full rounded-xl overflow-hidden shadow-2xl"
+                style={{
+                  backfaceVisibility: 'hidden',   // Hide when flipped away
+                  backgroundColor: 'var(--bg-surface)',
+                  border: '1px solid var(--border)',
+                }}
+              >
+                {/* Window chrome dots */}
+                <div
+                  className="flex items-center gap-2 px-4 py-3"
+                  style={{
+                    backgroundColor: 'var(--bg-hover)',
+                    borderBottom: '1px solid var(--border)',
+                  }}
+                >
+                  <span className="w-3 h-3 rounded-full bg-red-400/80" />
+                  <span className="w-3 h-3 rounded-full bg-yellow-400/80" />
+                  <span className="w-3 h-3 rounded-full bg-green-400/80" />
+                  <span
+                    className="ml-4 font-mono text-xs"
+                    style={{ color: 'var(--text-muted)' }}
+                  >
+                    brian.ts
+                  </span>
+                  {/* Hover hint */}
+                  <span
+                    className="ml-auto font-mono text-xs animate-pulse"
+                    style={{ color: 'var(--accent)' }}
+                  >
+                    hover me ↗
+                  </span>
+                </div>
+
+                {/* Code content */}
+                <pre
+                  className="p-6 text-sm leading-7 overflow-auto h-full"
+                  style={{ backgroundColor: '#0D1117' }}
+                >
+                  <code>
+                    <span className="text-purple-400">const </span>
+                    <span style={{ color: 'var(--accent)' }}>brian</span>
+                    <span className="text-gray-300"> = {'{'}</span>{'\n'}
+                    <span className="text-gray-500">  // Full-Stack Developer</span>{'\n'}
+                    <span className="text-blue-400">  name</span>
+                    <span className="text-gray-300">: </span>
+                    <span className="text-green-400">'Brian Nyairo'</span>
+                    <span className="text-gray-300">,</span>{'\n'}
+                    <span className="text-blue-400">  location</span>
+                    <span className="text-gray-300">: </span>
+                    <span className="text-green-400">'Nairobi, Kenya 🇰🇪'</span>
+                    <span className="text-gray-300">,</span>{'\n'}
+                    <span className="text-blue-400">  stack</span>
+                    <span className="text-gray-300">: [</span>{'\n'}
+                    <span className="text-green-400">    'React', 'TypeScript',</span>{'\n'}
+                    <span className="text-green-400">    'Node.js', 'PostgreSQL'</span>{'\n'}
+                    <span className="text-gray-300">  ],</span>{'\n'}
+                    <span className="text-blue-400">  available</span>
+                    <span className="text-gray-300">: </span>
+                    <span style={{ color: 'var(--accent)' }}>true</span>{'\n'}
+                    <span className="text-gray-300">{'}'}</span>
+                  </code>
+                </pre>
+              </div>
+
+              {/* ── BACK FACE: Profile Photo ─────────────────────────── */}
+              {/*
+                rotateY(180deg) pre-rotates this face so it's hidden initially.
+                When the inner rotates 180deg on hover, this face becomes visible
+                and appears the correct way around.
+              */}
+              <div
+                className="absolute inset-0 w-full h-full rounded-xl overflow-hidden shadow-2xl flex flex-col items-center justify-center gap-4"
+                style={{
+                  backfaceVisibility: 'hidden',
+                  transform: 'rotateY(180deg)',   // Pre-rotated — hidden until flip
+                  backgroundColor: 'var(--bg-surface)',
+                  border: '1px solid var(--accent)',
+                }}
+              >
+                {/* Profile photo */}
+                <div
+                  className="w-36 h-36 rounded-full overflow-hidden border-4"
+                  style={{ borderColor: 'var(--accent)' }}
+                >
+                  <img
+                    src="/images/photo.jpeg"
+                    alt="Brian Nyairo"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback initials if no photo yet
+                      e.currentTarget.style.display = 'none'
+                    }}
+                  />
+                  {/* Fallback initials avatar */}
+                  <div
+                    className="w-full h-full flex items-center justify-center font-display text-4xl font-black"
+                    style={{
+                      backgroundColor: 'var(--accent-glow)',
+                      color: 'var(--accent)',
+                    }}
+                  >
+                    BN
+                  </div>
+                </div>
+
+                {/* Name + title on back */}
+                <div className="text-center px-6">
+                  <h3
+                    className="font-display text-2xl font-bold"
+                    style={{ color: 'var(--text-primary)' }}
+                  >
+                    {profile.name}
+                  </h3>
+                  <p
+                    className="font-mono text-sm mt-1"
+                    style={{ color: 'var(--accent)' }}
+                  >
+                    {profile.title}
+                  </p>
+                  <p
+                    className="font-body text-sm mt-3 leading-relaxed"
+                    style={{ color: 'var(--text-secondary)' }}
+                  >
+                    {profile.location}
+                  </p>
+                </div>
+
+                {/* Accent line */}
+                <div
+                  className="w-12 h-0.5 rounded-full"
+                  style={{ backgroundColor: 'var(--accent)' }}
+                />
+              </div>
+
+            </div>{/* end flip-card-inner */}
+          </div>{/* end perspective wrapper */}
         </div>
+
       </div>
 
       {/* ── Scroll Indicator ─────────────────────────────────────────── */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="font-mono text-xs text-text-muted">scroll</span>
-        <div className="w-px h-12 bg-gradient-to-b from-text-muted to-transparent animate-pulse" />
+        <span
+          className="font-mono text-xs"
+          style={{ color: 'var(--text-muted)' }}
+        >
+          scroll
+        </span>
+        <div
+          className="w-px h-12 animate-pulse"
+          style={{
+            background: `linear-gradient(to bottom, var(--text-muted), transparent)`,
+          }}
+        />
       </div>
     </section>
-  );
+  )
 }
+
+export default Hero

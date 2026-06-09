@@ -1,15 +1,3 @@
-// src/components/sections/Skills.tsx
-//
-// ─── SKILLS SECTION ──────────────────────────────────────────────────────────
-// Displays Brian's technical skills organized by category.
-//
-// KEY CONCEPTS:
-//   • useState for active tab (category filter)
-//   • Array .filter() to show only selected category's skills
-//   • Mapping skill level to a visual indicator bar
-//   • Tab-based navigation without React Router
-// ─────────────────────────────────────────────────────────────────────────────
-
 import { useState } from "react";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Badge } from "@/components/ui/Badge";

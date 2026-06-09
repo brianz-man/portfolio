@@ -1,16 +1,3 @@
-// src/components/ui/TimelineItem.tsx
-//
-// ─── TIMELINE ITEM ───────────────────────────────────────────────────────────
-// Renders a single job/role entry in the Experience section.
-// Visually connected with a vertical line + dot to create the timeline effect.
-//
-// KEY CONCEPTS:
-//   • Props destructuring
-//   • Conditional styling based on "current" prop
-//   • Rendering arrays with .map()
-//   • CSS pseudo-element simulation using div positioning
-// ─────────────────────────────────────────────────────────────────────────────
-
 import { Badge } from "@/components/ui/Badge";
 import type { Experience } from "@/types";
 
